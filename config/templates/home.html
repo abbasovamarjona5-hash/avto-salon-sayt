@@ -1,0 +1,683 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ROYAL MOTORS</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+<style>
+* {margin:0;padding:0;box-sizing:border-box}
+
+body {
+    background:#101113;
+    color:white;
+    font-family:Arial,sans-serif;
+}
+
+:root {
+    --gold:#d5ad63;
+    --card:#191b1f;
+}
+
+.navbar {
+    background:#101113;
+    padding:20px 0;
+    border-bottom:1px solid #333;
+}
+
+.brand {
+    color:white;
+    font-size:25px;
+    font-weight:900;
+    text-decoration:none;
+}
+
+.brand span {color:var(--gold)}
+
+.nav-link {
+    color:white!important;
+    font-size:13px;
+    margin:0 10px;
+    font-weight:bold;
+}
+
+.nav-link:hover {color:var(--gold)!important}
+
+.add-btn {
+    background:var(--gold);
+    color:#111;
+    padding:12px 18px;
+    border-radius:5px;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.hero {
+    min-height:650px;
+    display:flex;
+    align-items:center;
+    background:
+    linear-gradient(90deg,#000e,transparent),
+    url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=2000&q=90') center/cover;
+}
+
+.hero h1 {
+    font-size:65px;
+    font-weight:900;
+}
+
+.hero h1 span {color:var(--gold)}
+
+.hero p {
+    color:#ccc;
+    max-width:500px;
+    line-height:2;
+    margin-top:20px;
+}
+
+.gold-btn {
+    display:inline-block;
+    background:var(--gold);
+    color:#111;
+    padding:15px 25px;
+    text-decoration:none;
+    font-weight:bold;
+    border-radius:4px;
+    margin-top:20px;
+}
+
+.features {
+    padding:35px 0;
+    background:#191b1f;
+}
+
+.feature {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:15px;
+}
+
+.feature i {
+    font-size:30px;
+    color:var(--gold);
+}
+
+.feature h6 {font-weight:bold}
+
+.feature small {color:#999}
+
+.cars-section {
+    padding:90px 0;
+}
+
+.section-tag {
+    text-align:center;
+    color:var(--gold);
+    letter-spacing:5px;
+    font-size:12px;
+}
+
+.section-title {
+    text-align:center;
+    font-size:40px;
+    font-weight:900;
+    margin:15px 0;
+}
+
+.section-description {
+    text-align:center;
+    color:#999;
+    margin-bottom:40px;
+}
+
+.search-box {
+    background:var(--card);
+    padding:15px;
+    border-radius:8px;
+    margin-bottom:35px;
+}
+
+.search-box input,
+.search-box select {
+    width:100%;
+    padding:14px;
+    background:#25272b;
+    color:white;
+    border:1px solid #444;
+    border-radius:5px;
+    outline:none;
+}
+
+.car-card {
+    background:var(--card);
+    border:1px solid #303238;
+    border-radius:10px;
+    overflow:hidden;
+    height:100%;
+    transition:.3s;
+}
+
+.car-card:hover {
+    transform:translateY(-7px);
+    border-color:var(--gold);
+}
+
+.car-image {
+    height:240px;
+    position:relative;
+    overflow:hidden;
+}
+
+.car-image img {
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:.4s;
+}
+
+.car-card:hover img {transform:scale(1.07)}
+
+.car-label {
+    position:absolute;
+    top:15px;
+    left:15px;
+    background:var(--gold);
+    color:#111;
+    padding:7px 12px;
+    font-size:11px;
+    font-weight:bold;
+}
+
+.car-info {padding:22px}
+
+.car-info h3 {
+    font-size:21px;
+    font-weight:bold;
+}
+
+.car-info p {
+    color:#999;
+    font-size:13px;
+    min-height:45px;
+    margin-top:12px;
+}
+
+.price {
+    color:var(--gold);
+    font-size:23px;
+    font-weight:900;
+    margin:20px 0;
+}
+
+.car-actions {
+    display:flex;
+    align-items:center;
+    gap:8px;
+}
+
+.car-btn {
+    flex:1;
+    text-align:center;
+    padding:12px 5px;
+    border:1px solid var(--gold);
+    color:var(--gold);
+    text-decoration:none;
+    font-size:11px;
+    font-weight:bold;
+    border-radius:4px;
+}
+
+.action-btn {
+    width:42px;
+    height:42px;
+    border:none;
+    border-radius:5px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:18px;
+    cursor:pointer;
+    text-decoration:none;
+}
+
+.update-btn {
+    background:var(--gold);
+    color:#111;
+}
+
+.delete-btn {
+    background:#dc3545;
+    color:white;
+}
+
+.about {
+    padding:90px 0;
+    background:#191b1f;
+}
+
+.about img {
+    width:100%;
+    height:380px;
+    object-fit:cover;
+    border-radius:8px;
+}
+
+.about h2 {
+    font-size:40px;
+    font-weight:900;
+    margin:20px 0;
+}
+
+.about h2 span {color:var(--gold)}
+
+.about p {
+    color:#aaa;
+    line-height:2;
+}
+
+.contact {
+    padding:80px 0;
+}
+
+.contact-card {
+    background:var(--card);
+    padding:30px;
+    text-align:center;
+    border:1px solid #333;
+    border-radius:8px;
+}
+
+.contact-card i {
+    color:var(--gold);
+    font-size:35px;
+}
+
+.contact-card p {color:#999}
+
+footer {
+    background:#090a0c;
+    padding:45px 0 20px;
+    border-top:1px solid #333;
+}
+
+.footer-text {color:#999;line-height:2}
+
+.footer-link {
+    display:block;
+    color:#999;
+    text-decoration:none;
+    margin:12px 0;
+}
+
+.footer-link:hover {color:var(--gold)}
+
+.footer-bottom {
+    border-top:1px solid #333;
+    margin-top:30px;
+    padding-top:20px;
+    text-align:center;
+    color:#777;
+}
+
+@media(max-width:768px) {
+    .hero h1 {font-size:40px}
+    .hero {min-height:520px}
+    .section-title {font-size:28px}
+    .feature {justify-content:flex-start;margin:12px}
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg sticky-top">
+<div class="container">
+
+<a href="{% url 'home' %}" class="brand">
+ROYAL<span>MOTORS.</span>
+</a>
+
+<button class="navbar-toggler bg-light" data-bs-toggle="collapse" data-bs-target="#menu">
+<span class="navbar-toggler-icon"></span>
+</button>
+
+<div class="collapse navbar-collapse" id="menu">
+<ul class="navbar-nav ms-auto align-items-lg-center">
+
+<li><a class="nav-link" href="#">BOSH SAHIFA</a></li>
+<li><a class="nav-link" href="#cars">AVTOMOBILLAR</a></li>
+<li><a class="nav-link" href="#about">BIZ HAQIMIZDA</a></li>
+<li><a class="nav-link" href="#contact">ALOQA</a></li>
+
+<li class="ms-lg-3 mt-3 mt-lg-0">
+<a href="{% url 'create' %}" class="add-btn">
+<i class="bi bi-plus-circle"></i> MAHSULOT QO'SHISH
+</a>
+</li>
+
+</ul>
+</div>
+</div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+<div class="container">
+<div class="col-lg-7">
+
+<div style="color:#d5ad63;letter-spacing:5px;font-weight:bold">
+ROYAL MOTORS • PREMIUM CLASS
+</div>
+
+<h1 class="mt-4">
+HAYDASHNING <span>YANGI</span> DARAJASI
+</h1>
+
+<p>
+Siz orzu qilgan avtomobillar endi bir manzilda.
+Sifat, qulaylik va hashamatni biz bilan kashf eting.
+</p>
+
+<a href="#cars" class="gold-btn">
+AVTOMOBILLARNI KO'RISH →
+</a>
+
+</div>
+</div>
+</section>
+
+<!-- FEATURES -->
+<section class="features">
+<div class="container">
+<div class="row">
+
+<div class="col-md-4">
+<div class="feature">
+<i class="bi bi-gem"></i>
+<div>
+<h6>Premium avtomobillar</h6>
+<small>Eng yaxshi modellar</small>
+</div>
+</div>
+</div>
+
+<div class="col-md-4">
+<div class="feature">
+<i class="bi bi-shield-check"></i>
+<div>
+<h6>Ishonchli xizmat</h6>
+<small>Sifat kafolati</small>
+</div>
+</div>
+</div>
+
+<div class="col-md-4">
+<div class="feature">
+<i class="bi bi-star"></i>
+<div>
+<h6>Qulay xarid</h6>
+<small>Eng yaxshi tanlov</small>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- CARS -->
+<section class="cars-section" id="cars">
+<div class="container">
+
+<div class="section-tag">OUR COLLECTION</div>
+<h2 class="section-title">BIZNING AVTOMOBILLAR</h2>
+
+<p class="section-description">
+Orzuingizdagi avtomobilni bizning kolleksiyamizdan toping.
+</p>
+
+<div class="search-box">
+<div class="row g-3">
+
+<div class="col-md-8">
+<input type="text" id="searchInput" placeholder="Avtomobil nomini qidiring...">
+</div>
+
+<div class="col-md-4">
+<select id="sortSelect">
+<option value="default">Standart saralash</option>
+<option value="low">Arzondan qimmatga</option>
+<option value="high">Qimmatdan arzonga</option>
+</select>
+</div>
+
+</div>
+</div>
+
+<div class="row g-4" id="carList">
+
+{% for product in products %}
+
+<div class="col-lg-4 col-md-6 car-item"
+data-name="{{ product.name|lower }}"
+data-price="{{ product.price }}">
+
+<div class="car-card">
+
+<div class="car-image">
+
+{% if product.image %}
+<img src="{{ product.image.url }}" alt="{{ product.name }}">
+{% else %}
+<img src="https://placehold.co/600x400?text=Car" alt="Avtomobil">
+{% endif %}
+
+<div class="car-label">PREMIUM</div>
+
+</div>
+
+<div class="car-info">
+
+<h3>{{ product.name }}</h3>
+
+<p>{{ product.description|truncatewords:16 }}</p>
+
+<div class="price">{{ product.price }} so'm</div>
+
+<div class="car-actions">
+
+<a href="#contact" class="car-btn">BATAFSIL</a>
+
+<a href="{% url 'update' product.id %}"
+class="action-btn update-btn"
+title="Tahrirlash">
+<i class="bi bi-pencil-square"></i>
+</a>
+
+<form method="POST"
+action="{% url 'delete' product.id %}"
+onsubmit="return confirm('Haqiqatan ham o‘chirmoqchimisiz?')">
+{% csrf_token %}
+<button type="submit" class="action-btn delete-btn" title="O'chirish">
+<i class="bi bi-trash3"></i>
+</button>
+</form>
+
+</div>
+</div>
+</div>
+</div>
+
+{% empty %}
+
+<div class="col-12 text-center py-5">
+<i class="bi bi-car-front" style="font-size:60px;color:#d5ad63"></i>
+<h4 class="mt-3">Hozircha avtomobillar mavjud emas</h4>
+<p class="text-secondary">Birinchi avtomobilingizni qo'shing.</p>
+<a href="{% url 'create' %}" class="gold-btn">AVTOMOBIL QO'SHISH</a>
+</div>
+
+{% endfor %}
+
+</div>
+
+<div id="noResults" class="text-center mt-5" style="display:none">
+<h5>Avtomobil topilmadi</h5>
+</div>
+
+</div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+<div class="container">
+<div class="row align-items-center g-5">
+
+<div class="col-lg-6">
+<img src="https://images.unsplash.com/photo-1485291571150-772bcfc10da5?auto=format&fit=crop&w=1000&q=85" alt="Avtomobil">
+</div>
+
+<div class="col-lg-6">
+<div style="color:#d5ad63;letter-spacing:4px">ABOUT ROYAL MOTORS</div>
+
+<h2>BIZ BILAN <span>HASHAMAT</span> SARI</h2>
+
+<p>
+Royal Motors — avtomobil olamidagi yangi standartlarni
+taqdim etuvchi premium avtosalon.
+</p>
+
+<p>
+Biz mijozlarimizga sifatli avtomobillar,
+qulay xizmat va ishonchli hamkorlikni taklif qilamiz.
+</p>
+
+<a href="#contact" class="gold-btn">BIZ BILAN BOG'LANING</a>
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+<div class="container">
+
+<div class="section-tag">CONTACT US</div>
+<h2 class="section-title">BIZ BILAN BOG'LANING</h2>
+
+<div class="row g-4 mt-3">
+
+<div class="col-md-4">
+<div class="contact-card">
+<i class="bi bi-telephone"></i>
+<h5 class="mt-3">Telefon</h5>
+<p>+998 90 123 45 67</p>
+</div>
+</div>
+
+<div class="col-md-4">
+<div class="contact-card">
+<i class="bi bi-envelope"></i>
+<h5 class="mt-3">Email</h5>
+<p>info@royalmotors.uz</p>
+</div>
+</div>
+
+<div class="col-md-4">
+<div class="contact-card">
+<i class="bi bi-geo-alt"></i>
+<h5 class="mt-3">Manzil</h5>
+<p>Toshkent, O'zbekiston</p>
+</div>
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+<div class="container">
+
+<div class="row g-4">
+
+<div class="col-md-5">
+<a href="#" class="brand">ROYAL<span>MOTORS.</span></a>
+<p class="footer-text mt-3">
+Premium avtomobillar va ishonchli xizmat.
+</p>
+</div>
+
+<div class="col-md-3">
+<h6>TEZKOR HAVOLALAR</h6>
+<a href="#" class="footer-link">Bosh sahifa</a>
+<a href="#cars" class="footer-link">Avtomobillar</a>
+<a href="#about" class="footer-link">Biz haqimizda</a>
+</div>
+
+<div class="col-md-4">
+<h6>ALOQA</h6>
+<a href="tel:+998901234567" class="footer-link">+998 90 123 45 67</a>
+<a href="mailto:info@royalmotors.uz" class="footer-link">info@royalmotors.uz</a>
+</div>
+
+</div>
+
+<div class="footer-bottom">
+© 2026 ROYAL MOTORS. Barcha huquqlar himoyalangan.
+</div>
+
+</div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+const searchInput = document.getElementById('searchInput');
+const sortSelect = document.getElementById('sortSelect');
+const carList = document.getElementById('carList');
+const noResults = document.getElementById('noResults');
+
+function filterCars() {
+    const search = searchInput.value.toLowerCase().trim();
+    const items = [...document.querySelectorAll('.car-item')];
+
+    items.forEach(item => {
+        item.style.display =
+            item.dataset.name.includes(search) ? '' : 'none';
+    });
+
+    const visible = items.filter(item => item.style.display !== 'none');
+    noResults.style.display = visible.length ? 'none' : 'block';
+}
+
+function sortCars() {
+    const items = [...document.querySelectorAll('.car-item')];
+
+    items.sort((a,b) => {
+        const priceA = Number(a.dataset.price);
+        const priceB = Number(b.dataset.price);
+
+        if(sortSelect.value === 'low') return priceA-priceB;
+        if(sortSelect.value === 'high') return priceB-priceA;
+        return 0;
+    });
+
+    items.forEach(item => carList.appendChild(item));
+    filterCars();
+}
+
+searchInput.addEventListener('input', filterCars);
+sortSelect.addEventListener('change', sortCars);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,17 @@
+
+<h2>Avtomobilni o'chirish</h2>
+
+<form method="POST">
+    {% csrf_token %}
+
+    <p>
+        Haqiqatan ham "{{ product.name }}" avtomobilini
+        o'chirmoqchimisiz?
+    </p>
+
+    <button type="submit">Ha, o'chirish</button>
+
+    <a href="{% url 'product_list' %}">
+        Bekor qilish
+    </a>
+</form>
